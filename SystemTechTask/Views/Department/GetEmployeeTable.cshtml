@@ -1,0 +1,46 @@
+﻿@model IEnumerable<SystemTechTask.Models.Employee>
+
+<table class="employeeTable table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DateOfEmployment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().DepartmentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.First().PositionId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateOfEmployment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Department.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Position.Name)
+            </td>
+            <td>
+                @Html.ActionLink("Remove from department", "RemoveFromDepartment", new { employeeId = item.Id })
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+

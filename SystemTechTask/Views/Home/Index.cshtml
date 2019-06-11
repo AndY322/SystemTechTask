@@ -1,0 +1,111 @@
+﻿@model SystemTechTask.Models.CompanyViewModel
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Employees</h2>
+
+<p>
+    @Html.ActionLink("Add New employee", "Create", "Employee")
+</p>
+@if (Model.Employees.Any())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().ModifiedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().DateOfEmployment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().DepartmentId)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Employees.First().PositionId)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Employees)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DateOfEmployment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Department.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Position.Name)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Employee", new { id = item.Id }, new { }) |
+                    @Html.ActionLink("Delete", "Delete", "Employee", new { id = item.Id }, new { })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
+<h2>Departments</h2>
+
+<p>
+    @Html.ActionLink("Add department", "Create", "Department")
+</p>
+
+@if (Model.Departments.Any())
+{
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Departments.First().Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departments.First().CreatedOn)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Departments.First().ModifiedOn)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model.Departments)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CreatedOn)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ModifiedOn)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", "Department", new { id = item.Id }, new { }) |
+                    @Html.ActionLink("Delete", "Delete", "Department", new { id = item.Id }, new { })
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+
